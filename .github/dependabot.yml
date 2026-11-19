@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    target-branch: 'main'
+    allow:
+      - dependency-type: 'direct'
+    commit-message:
+      prefix: 'dependabot github-actions update'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'github actions'
+    groups:
+      github-actions-dependencies:
+        applies-to: 'version-updates'
+        patterns:
+          - '*'
+      github-actions-dependencies-security:
+        applies-to: 'security-updates'
+        patterns:
+          - '*'
