@@ -22,3 +22,26 @@ updates:
         applies-to: 'security-updates'
         patterns:
           - '*'
+
+  - package-ecosystem: 'bundler'
+    directory: '/docs'
+    schedule:
+      interval: 'monthly'
+    target-branch: 'main'
+    allow:
+      - dependency-type: 'direct'
+    commit-message:
+      prefix: 'dependabot bundler update'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'ruby'
+    groups:
+      ruby-dependencies:
+        applies-to: 'version-updates'
+        patterns:
+          - '*'
+      ruby-dependencies-security:
+        applies-to: 'security-updates'
+        patterns:
+          - '*'
