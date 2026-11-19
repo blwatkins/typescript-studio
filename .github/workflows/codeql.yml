@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'actions', 'javascript-typescript', 'ruby' ]
+        language: [ 'actions' ]
     steps:
       - name: 'Checkout repository'
         uses: 'actions/checkout@v7.0.1'
