@@ -6,20 +6,19 @@ import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import esX from 'eslint-plugin-es-x';
 import globals from 'globals';
-import path from 'path';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 import { eslintRules } from './rules/eslint.mjs';
 import { stylisticRules } from './rules/stylistic.mjs';
 
-export function buildJavaScriptConfig(packageDir) {
+export function buildJavaScriptConfig() {
     return defineConfig([
         globalIgnores([
-            path.join(packageDir, '_compiled/**'),
-            path.join(packageDir, '_coverage/**'),
-            path.join(packageDir, '_dist/**'),
-            path.join(packageDir, '_doc/**')
+            '_compiled/**',
+            '_coverage/**',
+            '_dist/**',
+            '_doc/**'
         ]),
         {
             files: [

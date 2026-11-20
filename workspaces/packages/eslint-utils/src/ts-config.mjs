@@ -7,7 +7,6 @@ import stylistic from '@stylistic/eslint-plugin';
 import esX from 'eslint-plugin-es-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import globals from 'globals';
-import path from 'path';
 import tsEslint from 'typescript-eslint';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -17,17 +16,17 @@ import { jsdocRules } from './rules/jsdoc.mjs';
 import { stylisticRules } from './rules/stylistic.mjs';
 import { typescriptRules } from './rules/typescript.mjs';
 
-export function buildTypeScriptConfig(packageDir) {
+export function buildTypeScriptConfig() {
     return defineConfig([
         globalIgnores([
-            path.join(packageDir, '_compiled/**'),
-            path.join(packageDir, '_coverage/**'),
-            path.join(packageDir, '_dist/**'),
-            path.join(packageDir, '_doc/**'),
-            path.join(packageDir, '**/*.js'),
-            path.join(packageDir, '**/*.cjs'),
-            path.join(packageDir, '**/*.mjs'),
-            path.join(packageDir, '**/*.jsx')
+            '_compiled/**',
+            '_coverage/**',
+            '_dist/**',
+            '_doc/**',
+            '**/*.js',
+            '**/*.cjs',
+            '**/*.mjs',
+            '**/*.jsx'
         ]),
         {
             files: [
