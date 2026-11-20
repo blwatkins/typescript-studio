@@ -31,7 +31,6 @@ updates:
     target-branch: 'main'
     allow:
       - dependency-type: 'direct'
-    versioning-strategy: 'increase'
     commit-message:
       prefix: 'dependabot github-actions update'
       include: 'scope'
@@ -55,7 +54,6 @@ updates:
     target-branch: 'main'
     allow:
       - dependency-type: 'direct'
-    versioning-strategy: 'increase'
     commit-message:
       prefix: 'dependabot bundler update'
       include: 'scope'
