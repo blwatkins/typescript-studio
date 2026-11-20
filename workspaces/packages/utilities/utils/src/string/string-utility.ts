@@ -2,7 +2,7 @@
  * Copyright (c) 2024-2026 Brittni Watkins. All rights reserved.
  */
 
-import { StaticInstanceError } from '../error';
+import { PrimitiveTypeError, StaticInstanceError } from '../error';
 
 const regularExpressions = {
     singleLineLowercase: /^[^\s\p{Lu}]+(?:\u0020[^\s\p{Lu}]+)*$/u,
@@ -42,6 +42,30 @@ export class StringUtility {
     }
 
     /**
+     * Asserts that `input` is a string.
+     *
+     * @see {@link StringUtility.isString}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a string.
+     *
+     * @public
+     */
+    public static assertString(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isString(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a string.');
+        }
+    }
+
+    /**
      * Is `input` an empty string?
      *
      * @remarks Empty strings only contain whitespace characters.
@@ -56,6 +80,32 @@ export class StringUtility {
      */
     public static isEmpty(input: unknown): input is string {
         return StringUtility.isString(input) && (input.trim().length === 0);
+    }
+
+    /**
+     * Asserts that `input` is an empty string.
+     *
+     * @remarks Empty strings only contain whitespace characters.
+     *
+     * @see {@link StringUtility.isEmpty}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not an empty string.
+     *
+     * @public
+     */
+    public static assertEmpty(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isEmpty(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected an empty string.');
+        }
     }
 
     /**
@@ -76,9 +126,35 @@ export class StringUtility {
     }
 
     /**
-     * Is `input` a valid text string?
+     * Asserts that `input` is a non-empty string.
      *
-     * @remarks To be valid text string, `input` must satisfy all of the following rules:
+     * @remarks Non-empty strings must contain at least one non-whitespace character.
+     *
+     * @see {@link StringUtility.isNonEmpty}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a non-empty string.
+     *
+     * @public
+     */
+    public static assertNonEmpty(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isNonEmpty(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a non-empty string.');
+        }
+    }
+
+    /**
+     * Is `input` a text string?
+     *
+     * @remarks To be a text string, `input` must satisfy all of the following rules:
      * - It must be a non-empty string.
      * - Every character must be a tab, a line feed, a carriage return, printable Basic Latin (U+0020 to U+007E), printable Latin-1 Supplement (U+00A1 to U+00FF), the bullet `•` (U+2022), or part of an emoji sequence recommended for general interchange (RGI).
      * - A line feed must immediately follow every carriage return.
@@ -96,6 +172,36 @@ export class StringUtility {
         return StringUtility.isNonEmpty(input)
             && regularExpressions.textCharacters.test(input)
             && !regularExpressions.rejectedTextCharacters.test(input);
+    }
+
+    /**
+     * Asserts that `input` is a text string.
+     *
+     * @remarks To be a text string, `input` must satisfy all of the following rules:
+     * - It must be a non-empty string.
+     * - Every character must be a tab, a line feed, a carriage return, printable Basic Latin (U+0020 to U+007E), printable Latin-1 Supplement (U+00A1 to U+00FF), the bullet `•` (U+2022), or part of an emoji sequence recommended for general interchange (RGI).
+     * - A line feed must immediately follow every carriage return.
+     * - It cannot contain any of the following Latin-1 Supplement characters: the soft hyphen (U+00AD), or `¦ ¨ ª ¬ ¯ ² ³ ´ µ ¶ · ¸ ¹ º ¼ ½ ¾ × Æ Ð Ø Þ ß æ ð ø þ`.
+     *
+     * @see {@link StringUtility.isText}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a text string.
+     *
+     * @public
+     */
+    public static assertText(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isText(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a text string.');
+        }
     }
 
     /**
@@ -117,6 +223,33 @@ export class StringUtility {
     }
 
     /**
+     * Asserts that `input` is a single-line text string.
+     *
+     * @remarks A single-line text string is a text string whose non-whitespace characters are separated by single spaces (U+0020).
+     * It does not allow tabs, line breaks, leading whitespace, trailing whitespace, or consecutive whitespace.
+     *
+     * @see {@link StringUtility.isSingleLineText}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a single-line text string.
+     *
+     * @public
+     */
+    public static assertSingleLineText(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isSingleLineText(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a single-line text string.');
+        }
+    }
+
+    /**
      * Is `input` a single-line, lowercase text string?
      *
      * @remarks A single-line text string is a text string whose non-whitespace characters are separated by single spaces (U+0020).
@@ -130,8 +263,35 @@ export class StringUtility {
      *
      * @public
      */
-    public static isSingleLineLowercase(input: unknown): input is string {
+    public static isSingleLineLowercaseText(input: unknown): input is string {
         return StringUtility.isText(input) && regularExpressions.singleLineLowercase.test(input);
+    }
+
+    /**
+     * Asserts that `input` is a single-line, lowercase text string.
+     *
+     * @remarks A single-line text string is a text string whose non-whitespace characters are separated by single spaces (U+0020).
+     * It does not allow tabs, line breaks, leading whitespace, trailing whitespace, or consecutive whitespace.
+     *
+     * @see {@link StringUtility.isSingleLineLowercaseText}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a single-line, lowercase text string.
+     *
+     * @public
+     */
+    public static assertSingleLineLowercaseText(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isSingleLineLowercaseText(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a single-line lowercase text string.');
+        }
     }
 
     /**
@@ -148,7 +308,35 @@ export class StringUtility {
      *
      * @public
      */
-    public static isSingleLineUppercase(input: unknown): input is string {
+    public static isSingleLineUppercaseText(input: unknown): input is string {
         return StringUtility.isText(input) && regularExpressions.singleLineUppercase.test(input);
+    }
+
+    /**
+     * Asserts that `input` is a single-line, uppercase text string.
+     *
+     * @remarks A single-line text string is a text string whose non-whitespace characters are separated by single spaces (U+0020).
+     * It does not allow tabs, line breaks, leading whitespace, trailing whitespace, or consecutive whitespace.
+     *
+     * @see {@link StringUtility.isSingleLineUppercaseText}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not a single-line uppercase text string.
+     *
+     * @public
+     * @since 0.1.0
+     */
+    public static assertSingleLineUppercaseText(input: unknown, message?: string): asserts input is string {
+        if (!StringUtility.isSingleLineUppercaseText(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a single-line uppercase text string.');
+        }
     }
 }
