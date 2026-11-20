@@ -2,5 +2,12 @@
   "name": "@blwatkins/utils",
   "private": true,
   "description": "A toolkit of general-purpose TypeScript and JavaScript utilities.",
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "scripts": {
+    "lint:ts": "eslint .",
+    "validate": "npm run lint:ts"
+  },
+  "devDependencies": {
+    "@blwatkins/eslint-utils": "*"
+  }
 }
