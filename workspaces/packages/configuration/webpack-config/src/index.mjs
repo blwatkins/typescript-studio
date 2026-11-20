@@ -7,7 +7,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export function buildSketchConfig(sketchDir, overrides = {}) {
+export function buildSketchConfig(sketchDir) {
     return {
         entry: path.join(sketchDir, 'src/main.ts'),
         module: {
@@ -66,7 +66,6 @@ export function buildSketchConfig(sketchDir, overrides = {}) {
             liveReload: true,
             open: true,
             webSocketServer: 'ws'
-        },
-        ...overrides
+        }
     };
 }
