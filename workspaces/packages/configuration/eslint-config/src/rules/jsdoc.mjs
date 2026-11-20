@@ -40,7 +40,7 @@ export const jsdocRules = {
 
     'jsdoc/require-param': 'error',
 
-    'jsdoc/require-param-description': 'error',
+    'jsdoc/require-param-description': 'off',
 
     'jsdoc/require-param-name': 'error',
 

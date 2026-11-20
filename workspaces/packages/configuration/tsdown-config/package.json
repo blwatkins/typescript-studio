@@ -1,0 +1,16 @@
+{
+  "name": "@blwatkins/tsdown-config",
+  "private": true,
+  "description": "Configuration helpers for tsdown.",
+  "main": "src/index.mjs",
+  "scripts": {
+    "lint": "eslint .",
+    "validate": "npm run lint"
+  },
+  "dependencies": {
+    "tsdown": "^0.23.7"
+  },
+  "devDependencies": {
+    "@blwatkins/eslint-config": "*"
+  }
+}

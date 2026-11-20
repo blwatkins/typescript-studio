@@ -2,7 +2,7 @@
 
 ## About
 
-Configuration helpers for ESLint.
+Configuration helpers for [ESLint](https://eslint.org/).
 
 ---
 

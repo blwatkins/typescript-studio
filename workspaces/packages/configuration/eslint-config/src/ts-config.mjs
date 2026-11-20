@@ -16,6 +16,11 @@ import { jsdocRules } from './rules/jsdoc.mjs';
 import { stylisticRules } from './rules/stylistic.mjs';
 import { typescriptRules } from './rules/typescript.mjs';
 
+/**
+ * Builds the ESLint configuration for TypeScript files.
+ *
+ * @returns {object} The ESLint configuration object.
+ */
 export function buildTypeScriptConfig() {
     return defineConfig([
         globalIgnores([

@@ -12,7 +12,7 @@ export class StringUtility {
     /**
      * Is `input` a string?
      *
-     * @param {unknown} input - The input to check.
+     * @param {unknown} input
      *
      * @returns {input is string}
      *
