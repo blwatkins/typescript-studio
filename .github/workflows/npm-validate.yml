@@ -1,0 +1,28 @@
+name: 'npm Validate'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  validate:
+    permissions:
+      contents: 'read'
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        node-version: [ '26.13.x' ]
+    steps:
+      - uses: 'actions/checkout@v7.0.1'
+      - name: 'Use Node.js ${{ matrix.node-version }}'
+        uses: 'actions/setup-node@v7.1.0'
+        with:
+          node-version: '${{ matrix.node-version }}'
+          cache: 'npm'
+      - run: 'npm ci'
+      - run: 'npm run validate --workspaces'
