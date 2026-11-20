@@ -4,15 +4,13 @@
 
 import path from 'path';
 
-import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitest/config';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 /**
- * @param environment {'node' | 'jsdom' | 'happy-dom' | 'edge-runtime'}
+ * @param {string} packageDir - The path to the package directory.
+ * @param {string} environment - The environment to use for testing.
  */
-export function buildTypeScriptConfig(environment) {
+export function buildTypeScriptConfig(packageDir, environment = 'node') {
     return defineConfig({
         test: {
             environment,
@@ -25,8 +23,30 @@ export function buildTypeScriptConfig(environment) {
             ],
             typecheck: {
                 enabled: true,
-                tsconfig: path.join(__dirname, '../tsconfig.vitest.json'),
+                tsconfig: path.join(packageDir, 'tsconfig.vitest.json'),
                 include: ['test/**/*.{test,spec}.{ts,mts,cts,tsx}']
+            },
+            coverage: {
+                provider: 'v8',
+                reporter: [
+                    'text',
+                    'lcov',
+                    'json',
+                    'json-summary',
+                    'clover',
+                    'html'
+                ],
+                reportsDirectory: path.join(packageDir, '_coverage'),
+                exclude: [
+                    '_dist/**',
+                    '_compiled/**',
+                    '_coverage/**',
+                    '_doc/**',
+                    'test/**',
+                    '**/*.d.ts',
+                    '**/*.config.{js,mjs,cjs,ts}',
+                    'eslint.config.*.mjs'
+                ]
             }
         }
     });
