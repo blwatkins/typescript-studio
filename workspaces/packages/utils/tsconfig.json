@@ -1,0 +1,22 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    /* Modules */
+    "rootDir": "./",
+
+    /* Libraries */
+    "lib": [
+      "dom",
+      "es2024"
+    ],
+    "types": [
+      "node"
+    ],
+
+    /* Emit */
+    "sourceMap": false,
+    "declaration": true,
+    "declarationMap": false,
+    "removeComments": false
+  }
+}
