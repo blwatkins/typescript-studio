@@ -1,5 +1,5 @@
 {
-  "name": "@blwatkins/webpack-utils",
+  "name": "@blwatkins/webpack-config",
   "private": true,
   "description": "Configuration helpers for webpack.",
   "main": "src/index.mjs",
@@ -18,6 +18,6 @@
     "webpack-dev-server": "^6.1.0"
   },
   "devDependencies": {
-    "@blwatkins/eslint-utils": "*"
+    "@blwatkins/eslint-config": "*"
   }
 }

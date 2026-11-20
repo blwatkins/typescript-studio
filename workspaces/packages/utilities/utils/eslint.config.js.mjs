@@ -6,6 +6,6 @@ import path from 'path';
 
 import { fileURLToPath } from 'url';
 
-import { buildJavaScriptConfig } from '@blwatkins/eslint-utils';
+import { buildJavaScriptConfig } from '@blwatkins/eslint-config';
 
 export default buildJavaScriptConfig(path.dirname(fileURLToPath(import.meta.url)));
