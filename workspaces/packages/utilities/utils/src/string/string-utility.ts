@@ -290,7 +290,7 @@ export class StringUtility {
                 throw new PrimitiveTypeError(message);
             }
 
-            throw new PrimitiveTypeError('Expected a single-line lowercase text string.');
+            throw new PrimitiveTypeError('Expected a single-line, lowercase text string.');
         }
     }
 
@@ -325,10 +325,9 @@ export class StringUtility {
      *
      * @returns {asserts input is string}
      *
-     * @throws {PrimitiveTypeError} When `input` is not a single-line uppercase text string.
+     * @throws {PrimitiveTypeError} When `input` is not a single-line, uppercase text string.
      *
      * @public
-     * @since 0.1.0
      */
     public static assertSingleLineUppercaseText(input: unknown, message?: string): asserts input is string {
         if (!StringUtility.isSingleLineUppercaseText(input)) {
@@ -336,7 +335,7 @@ export class StringUtility {
                 throw new PrimitiveTypeError(message);
             }
 
-            throw new PrimitiveTypeError('Expected a single-line uppercase text string.');
+            throw new PrimitiveTypeError('Expected a single-line, uppercase text string.');
         }
     }
 }
