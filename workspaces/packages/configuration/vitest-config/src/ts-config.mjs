@@ -10,7 +10,7 @@ import { defineConfig } from 'vitest/config';
  * Builds the Vitest configuration object for a TypeScript package.
  *
  * @param {string} packageDir - The path to the package directory.
- * @param {'node' | 'jsdom' | 'happy-dom' | 'edge-runtime'} [environment='node'] - The environment to use for testing.
+ * @param {'node' | 'jsdom' | 'happy-dom' | 'edge-runtime'} [environment] - The environment to use for testing.
  *
  * @returns {object} The Vitest configuration object.
  */

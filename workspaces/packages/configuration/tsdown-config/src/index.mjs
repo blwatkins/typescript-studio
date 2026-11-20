@@ -4,6 +4,11 @@
 
 import { defineConfig } from 'tsdown';
 
+/**
+ * Builds the tsdown configuration.
+ *
+ * @returns {object} The tsdown configuration object.
+ */
 export function buildConfig() {
     return defineConfig({
         entry: {

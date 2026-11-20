@@ -7,6 +7,13 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
+/**
+ * Builds the webpack configuration for a sketch.
+ *
+ * @param {string} sketchDir
+ *
+ * @returns {object} The webpack configuration object.
+ */
 export function buildSketchConfig(sketchDir) {
     return {
         entry: path.join(sketchDir, 'src/main.ts'),
