@@ -1,0 +1,19 @@
+{
+  "name": "@blwatkins/eslint-utils",
+  "private": true,
+  "description": "Configuration helpers for eslint.",
+  "main": "index.mjs",
+  "scripts": {
+    "lint": "eslint .",
+    "validate": "npm run lint"
+  },
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^6.0.1",
+    "eslint": "^10.15.0",
+    "eslint-plugin-es-x": "^10.1.0",
+    "eslint-plugin-jsdoc": "^65.5.0",
+    "globals": "^17.14.0",
+    "typescript-eslint": "^8.73.0"
+  }
+}
