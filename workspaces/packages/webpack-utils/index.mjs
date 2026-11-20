@@ -51,7 +51,7 @@ export function buildSketchConfig(sketchDir, overrides = {}) {
         },
         devServer: {
             static: {
-                directory: path.join(sketchDir, '_dist'),
+                directory: path.join(sketchDir, '_dist')
             },
             client: {
                 overlay: true
@@ -68,5 +68,5 @@ export function buildSketchConfig(sketchDir, overrides = {}) {
             webSocketServer: 'ws'
         },
         ...overrides
-    }
+    };
 }
