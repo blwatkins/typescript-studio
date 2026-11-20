@@ -3,18 +3,22 @@
   "private": true,
   "description": "A starting point for TypeScript Studio sketches.",
   "scripts": {
+    "lint:js": "eslint -c eslint.config.js.mjs .",
+    "lint:ts": "eslint .",
+    "lint:all": "npm run lint:js && npm run lint:ts",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build:check": "npm run build:dev && npm run build",
     "dev": "webpack-dev-server --mode development",
     "preview": "webpack-dev-server --mode production",
-    "validate": "npm run build:check"
+    "validate": "npm run lint:all && npm run build:check"
   },
   "dependencies": {
     "@blwatkins/utils": "*",
     "p5": "^2.4.0"
   },
   "devDependencies": {
+    "@blwatkins/eslint-utils": "*",
     "@blwatkins/webpack-utils": "*"
   }
 }
