@@ -1,7 +1,7 @@
 {
   "name": "@blwatkins/eslint-utils",
   "private": true,
-  "description": "Configuration helpers for eslint.",
+  "description": "Configuration helpers for ESLint.",
   "main": "src/index.mjs",
   "scripts": {
     "lint": "eslint .",

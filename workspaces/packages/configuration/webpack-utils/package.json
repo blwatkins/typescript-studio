@@ -2,7 +2,7 @@
   "name": "@blwatkins/webpack-utils",
   "private": true,
   "description": "Configuration helpers for webpack.",
-  "main": "index.mjs",
+  "main": "src/index.mjs",
   "scripts": {
     "lint": "eslint .",
     "validate": "npm run lint"
