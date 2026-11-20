@@ -2,11 +2,6 @@
   "name": "@blwatkins/webpack-utils",
   "private": true,
   "description": "Configuration helpers for webpack.",
-  "author": {
-    "name": "Brittni Watkins",
-    "url": "https://blwatkins.github.io/"
-  },
-  "type": "module",
   "main": "index.mjs",
   "dependencies": {
     "css-loader": "^7.1.5",

@@ -2,10 +2,5 @@
   "name": "@blwatkins/utils",
   "private": true,
   "description": "A toolkit of general-purpose TypeScript and JavaScript utilities.",
-  "author": {
-    "name": "Brittni Watkins",
-    "url": "https://blwatkins.github.io/"
-  },
-  "type": "module",
   "main": "src/index.ts"
 }

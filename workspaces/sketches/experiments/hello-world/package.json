@@ -2,11 +2,6 @@
   "name": "hello-world",
   "private": true,
   "description": "A starting point for TypeScript Studio sketches.",
-  "author": {
-    "name": "Brittni Watkins",
-    "url": "https://blwatkins.github.io/"
-  },
-  "type": "module",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
