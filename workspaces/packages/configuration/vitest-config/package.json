@@ -1,0 +1,15 @@
+{
+  "name": "@blwatkins/vitest-config",
+  "private": true,
+  "description": "Configuration helpers for Vitest.",
+  "main": "src/index.mjs",
+  "scripts": {
+    "lint": "eslint .",
+    "validate": "npm run lint"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@blwatkins/eslint-config": "*"
+  }
+}
