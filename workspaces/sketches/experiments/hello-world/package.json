@@ -18,7 +18,7 @@
     "p5": "^2.4.0"
   },
   "devDependencies": {
-    "@blwatkins/eslint-utils": "*",
-    "@blwatkins/webpack-utils": "*"
+    "@blwatkins/eslint-config": "*",
+    "@blwatkins/webpack-config": "*"
   }
 }

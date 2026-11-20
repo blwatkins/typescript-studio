@@ -19,6 +19,8 @@
     "workspaces/apis/*",
     "workspaces/apps/*",
     "workspaces/packages/*",
+    "workspaces/packages/configuration/*",
+    "workspaces/packages/utilities/*",
     "workspaces/sketches/*",
     "workspaces/sketches/experiments/*"
   ]

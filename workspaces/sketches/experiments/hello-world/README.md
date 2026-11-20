@@ -6,4 +6,4 @@ A starting point for TypeScript Studio sketches.
 
 ---
 
-Copyright &copy; 2026 Brittni Watkins. All rights reserved.
+Copyright &copy; 2024-2026 Brittni Watkins. All rights reserved.

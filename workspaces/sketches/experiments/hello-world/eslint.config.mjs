@@ -1,11 +1,7 @@
 /*
- * Copyright (c) 2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-import path from 'path';
+import { buildTypeScriptConfig } from '@blwatkins/eslint-config';
 
-import { fileURLToPath } from 'url';
-
-import { buildTypeScriptConfig } from '@blwatkins/eslint-utils';
-
-export default buildTypeScriptConfig(path.dirname(fileURLToPath(import.meta.url)));
+export default buildTypeScriptConfig();
