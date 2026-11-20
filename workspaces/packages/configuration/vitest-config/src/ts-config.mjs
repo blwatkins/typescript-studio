@@ -41,6 +41,7 @@ export function buildTypeScriptConfig(packageDir, environment = 'node') {
                     'html'
                 ],
                 reportsDirectory: path.join(packageDir, '_coverage'),
+                include: ['src/**'],
                 exclude: [
                     '_dist/**',
                     '_compiled/**',
