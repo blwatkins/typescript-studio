@@ -4,7 +4,7 @@
 
 /**
  * An error thrown when an input does not match the expected index range.
- * This error is typically used in validation or assertion where the input value is not a valid index.
+ * This error is typically used when the input value is not a valid index.
  */
 export class IndexRangeError extends RangeError {
     /**

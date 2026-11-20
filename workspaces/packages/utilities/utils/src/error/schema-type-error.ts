@@ -4,7 +4,7 @@
 
 /**
  * An error thrown when an input does not match the shape or schema of the expected data structure.
- * This error is typically used in validation or assertion where the input data does not conform to the expected object schema.
+ * This error is typically used when the input data does not conform to the expected object schema.
  */
 export class SchemaTypeError extends TypeError {
     /**

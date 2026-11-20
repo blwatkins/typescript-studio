@@ -4,7 +4,7 @@
 
 /**
  * An error thrown when an input does not match the expected primitive type.
- * This error is typically used in validation or assertion where the input type does not conform to the expected primitive type.
+ * This error is typically used when the input type does not conform to the expected primitive type.
  */
 export class PrimitiveTypeError extends TypeError {
     /**
