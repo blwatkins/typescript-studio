@@ -1,0 +1,28 @@
+{
+  "name": "@blwatkins/base",
+  "private": true,
+  "description": "A toolkit of general-purpose TypeScript and JavaScript utilities.",
+  "main": "./_dist/index.mjs",
+  "types": "./_dist/index.d.mts",
+  "module": "./_dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./_dist/index.d.mts",
+      "default": "./_dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "lint:js": "eslint -c eslint.config.js.mjs .",
+    "lint:ts": "eslint .",
+    "lint:all": "npm run lint:js && npm run lint:ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "validate": "npm run lint:all && npx tsc --noEmit && npm test"
+  },
+  "devDependencies": {
+    "@blwatkins/eslint-config": "*",
+    "@blwatkins/vitest-config": "*"
+  }
+}
