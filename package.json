@@ -1,0 +1,25 @@
+{
+  "name": "typescript-studio",
+  "private": true,
+  "description": "A home for all of Brittni's TypeScript projects.",
+  "author": {
+    "name": "Brittni Watkins",
+    "url": "https://blwatkins.github.io/"
+  },
+  "homepage": "https://blwatkins.github.io/typescript-studio/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blwatkins/typescript-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blwatkins/typescript-studio/issues"
+  },
+  "type": "module",
+  "workspaces": [
+    "workspaces/apis/*",
+    "workspaces/apps/*",
+    "workspaces/packages/*",
+    "workspaces/sketches/*",
+    "workspaces/sketches/experiments/*"
+  ]
+}

@@ -1,0 +1,24 @@
+/*
+ * Copyright (c) 2024-2026 Brittni Watkins.
+ */
+
+/**
+ * Static properties and methods for validating string types.
+ */
+export class StringUtility {
+    // TODO - private constructor
+    // TODO - static instance error
+
+    /**
+     * Is `input` a string?
+     *
+     * @param {unknown} input - The input to check.
+     *
+     * @returns {input is string}
+     *
+     * @public
+     */
+    public static isString(input: unknown): input is string {
+        return typeof input === 'string';
+    }
+}
