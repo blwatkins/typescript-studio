@@ -38,6 +38,10 @@ description: 'Resources and references used to develop the projects in Brittni''
 
 ### GitHub
 
+#### Actions
+
+- [GitHub - actions/starter-workflows/pages/jekyll.yml](https://github.com/actions/starter-workflows/blob/main/pages/jekyll.yml)
+
 #### Dependabot
 
 - [GitHub Docs - Dependabot options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference)
