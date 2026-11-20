@@ -19,10 +19,12 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "validate": "npm run lint:all && npx tsc --noEmit && npm test"
+    "build": "tsdown",
+    "validate": "npm run lint:all && npm run build && npm test"
   },
   "devDependencies": {
     "@blwatkins/eslint-config": "*",
+    "@blwatkins/tsdown-config": "*",
     "@blwatkins/vitest-config": "*"
   }
 }
