@@ -4,7 +4,7 @@ layout: 'custom-post'
 author:
   - 'Brittni Watkins'
 date: 2026-11-19
-modified_date: 2026-11-19
+modified_date: 2026-11-20
 toc: true
 read_time: false
 description: 'Resources and references used to develop the projects in Brittni''s TypeScript Studio.'
@@ -26,6 +26,13 @@ description: 'Resources and references used to develop the projects in Brittni''
 ### TypeScript
 
 - [TypeScript](https://www.typescriptlang.org/)
+
+## Packages and Frameworks
+
+- [ESLint](https://eslint.org/)
+- [tsdown](https://tsdown.dev/)
+- [Vitest](https://vitest.dev/)
+- [webpack](https://webpack.js.org/)
 
 ## Runtime Environments
 

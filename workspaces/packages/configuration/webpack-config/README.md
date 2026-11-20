@@ -2,7 +2,7 @@
 
 ## About
 
-Configuration helpers for webpack.
+Configuration helpers for [webpack](https://webpack.js.org/).
 
 ---
 

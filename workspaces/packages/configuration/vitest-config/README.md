@@ -2,7 +2,7 @@
 
 ## About
 
-Configuration helpers for Vitest.
+Configuration helpers for [Vitest](https://vitest.dev/).
 
 ---
 
