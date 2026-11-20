@@ -3,3 +3,4 @@
  */
 
 export * from './js-config.mjs';
+export * from './ts-config.mjs';
