@@ -4,4 +4,4 @@
 
 import { test } from 'vitest';
 
-test.todo('StringUtility tests');
+test.todo('Utility Tests');
