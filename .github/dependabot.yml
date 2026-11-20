@@ -1,5 +1,29 @@
 version: 2
 updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    target-branch: 'main'
+    allow:
+      - dependency-type: 'direct'
+    versioning-strategy: 'increase'
+    commit-message:
+      prefix: 'dependabot npm update'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'npm'
+    groups:
+      npm-dependencies:
+        applies-to: 'version-updates'
+        patterns:
+          - '*'
+      npm-dependencies-security:
+        applies-to: 'security-updates'
+        patterns:
+          - '*'
+
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
@@ -7,6 +31,7 @@ updates:
     target-branch: 'main'
     allow:
       - dependency-type: 'direct'
+    versioning-strategy: 'increase'
     commit-message:
       prefix: 'dependabot github-actions update'
       include: 'scope'
@@ -30,6 +55,7 @@ updates:
     target-branch: 'main'
     allow:
       - dependency-type: 'direct'
+    versioning-strategy: 'increase'
     commit-message:
       prefix: 'dependabot bundler update'
       include: 'scope'
