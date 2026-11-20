@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Brittni Watkins.
+ * Copyright (c) 2024-2026 Brittni Watkins.
  */
 
 export * from './js-config.mjs';
