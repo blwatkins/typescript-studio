@@ -19,6 +19,7 @@
     "workspaces/apis/*",
     "workspaces/apps/*",
     "workspaces/packages/*",
+    "workspaces/packages/color/*",
     "workspaces/packages/configuration/*",
     "workspaces/packages/utilities/*",
     "workspaces/sketches/*",
