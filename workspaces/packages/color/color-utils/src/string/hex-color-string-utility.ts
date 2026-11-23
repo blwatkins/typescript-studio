@@ -17,7 +17,7 @@ export class HexColorStringUtility {
     /**
      * Private constructor.
      *
-     * @throws {StaticInstanceError} When class is instantiated.
+     * @throws {StaticInstanceError} When the class is instantiated.
      * {@link HexColorStringUtility} is a static class and cannot be instantiated.
      *
      * @private
@@ -31,11 +31,11 @@ export class HexColorStringUtility {
      *
      * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
-     * @returns {RegExp} - Regular expression pattern for hex color strings in the format `#RRGGBB` or `#RRGGBBAA`.
+     * @returns {RegExp} Regular expression pattern for hex color strings in the format `#RRGGBB` or `#RRGGBBAA`.
      *
      * @public
      */
-    public static get hexColorPattern(): RegExp {
+    public static get hexColor(): RegExp {
         return regularExpressions.hexColor;
     }
 
@@ -44,11 +44,11 @@ export class HexColorStringUtility {
      *
      * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
-     * @returns {RegExp} - Regular expression pattern for hex color strings in the format `#RRGGBB`.
+     * @returns {RegExp} Regular expression pattern for hex color strings in the format `#RRGGBB`.
      *
      * @public
      */
-    public static get hexColorPatternRGB(): RegExp {
+    public static get hexColorRGB(): RegExp {
         return regularExpressions.hexColorRGB;
     }
 
@@ -57,16 +57,20 @@ export class HexColorStringUtility {
      *
      * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
-     * @returns {RegExp} - Regular expression pattern for hex color strings in the format `#RRGGBBAA`.
+     * @returns {RegExp} Regular expression pattern for hex color strings in the format `#RRGGBBAA`.
      *
      * @public
      */
-    public static get hexColorPatternRGBA(): RegExp {
+    public static get hexColorRGBA(): RegExp {
         return regularExpressions.hexColorRGBA;
     }
 
     /**
-     * Is `input` a string matching {@link HexColorStringUtility.hexColorPattern}?
+     * Is `input` a string matching {@link HexColorStringUtility.hexColor}?
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
+     *
+     * @see {@link StringUtility.isString}
      *
      * @param {unknown} input
      *
@@ -75,11 +79,13 @@ export class HexColorStringUtility {
      * @public
      */
     public static isHexColor(input: unknown): input is string {
-        return StringUtility.isString(input) && HexColorStringUtility.hexColorPattern.test(input);
+        return StringUtility.isString(input) && HexColorStringUtility.hexColor.test(input);
     }
 
     /**
-     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPattern}.
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColor}.
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @see {@link HexColorStringUtility.isHexColor}
      *
@@ -88,7 +94,7 @@ export class HexColorStringUtility {
      *
      * @returns {asserts input is string}
      *
-     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPattern}.
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColor}.
      *
      * @public
      */
@@ -103,7 +109,11 @@ export class HexColorStringUtility {
     }
 
     /**
-     * Is `input` a string matching {@link HexColorStringUtility.hexColorPatternRGB}?
+     * Is `input` a string matching {@link HexColorStringUtility.hexColorRGB}?
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
+     *
+     * @see {@link StringUtility.isString}
      *
      * @param {unknown} input
      *
@@ -112,11 +122,13 @@ export class HexColorStringUtility {
      * @public
      */
     public static isHexColorRGB(input: unknown): input is string {
-        return StringUtility.isString(input) && HexColorStringUtility.hexColorPatternRGB.test(input);
+        return StringUtility.isString(input) && HexColorStringUtility.hexColorRGB.test(input);
     }
 
     /**
-     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPatternRGB}.
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColorRGB}.
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @see {@link HexColorStringUtility.isHexColorRGB}
      *
@@ -125,7 +137,7 @@ export class HexColorStringUtility {
      *
      * @returns {asserts input is string}
      *
-     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPatternRGB}.
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorRGB}.
      *
      * @public
      */
@@ -140,7 +152,11 @@ export class HexColorStringUtility {
     }
 
     /**
-     * Is `input` a string matching {@link HexColorStringUtility.hexColorPatternRGBA}?
+     * Is `input` a string matching {@link HexColorStringUtility.hexColorRGBA}?
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
+     *
+     * @see {@link StringUtility.isString}
      *
      * @param {unknown} input
      *
@@ -149,11 +165,13 @@ export class HexColorStringUtility {
      * @public
      */
     public static isHexColorRGBA(input: unknown): input is string {
-        return StringUtility.isString(input) && HexColorStringUtility.hexColorPatternRGBA.test(input);
+        return StringUtility.isString(input) && HexColorStringUtility.hexColorRGBA.test(input);
     }
 
     /**
-     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPatternRGBA}.
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColorRGBA}.
+     *
+     * @remarks Case must be consistent in hex color strings: either all lowercase or all uppercase.
      *
      * @see {@link HexColorStringUtility.isHexColorRGBA}
      *
@@ -162,7 +180,7 @@ export class HexColorStringUtility {
      *
      * @returns {asserts input is string}
      *
-     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPatternRGBA}.
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorRGBA}.
      *
      * @public
      */
@@ -172,7 +190,7 @@ export class HexColorStringUtility {
                 throw new PrimitiveTypeError(message);
             }
 
-            throw new PrimitiveTypeError('Expected a hex color RGB string.');
+            throw new PrimitiveTypeError('Expected a hex color RGBA string.');
         }
     }
 }
