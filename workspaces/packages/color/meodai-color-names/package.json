@@ -1,0 +1,23 @@
+{
+  "name": "@blwatkins/meodai-color-names",
+  "private": true,
+  "description": "Color names sourced from meodai's color-name-list package.",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint:js": "eslint -c eslint.config.js.mjs .",
+    "lint:ts": "eslint .",
+    "lint:all": "npm run lint:js && npm run lint:ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "validate": "npm run lint:all && npx tsc --noEmit && npm test"
+  },
+  "dependencies": {
+    "@blwatkins/color-utils": "*"
+  },
+  "devDependencies": {
+    "@blwatkins/eslint-config": "*",
+    "@blwatkins/vitest-config": "*"
+  }
+}
