@@ -1,8 +1,8 @@
-# TypeScript Utilities
+# TypeScript Color Utilities
 
 ## About
 
-A toolkit of general-purpose TypeScript and JavaScript utilities.
+A toolkit of TypeScript and JavaScript utilities for creating and managing colors.
 
 ---
 
