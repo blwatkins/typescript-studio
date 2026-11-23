@@ -5,9 +5,9 @@
 import { PrimitiveTypeError, StaticInstanceError, StringUtility } from '@blwatkins/utils';
 
 const regularExpressions = {
-    hexColor: /^(#[A-F0-9]{6}(?:[A-F0-9]{2})?|#[a-f0-9]{6}(?:[a-f0-9]{2})?)$/,
-    hexColorRGB: /^(#[A-F0-9]{6}|#[a-f0-9]{6})$/,
-    hexColorRGBA: /^(#[A-F0-9]{8}|#[a-f0-9]{8})$/
+    hexColor: /^#([A-F0-9]{6}(?:[A-F0-9]{2})?|[a-f0-9]{6}(?:[a-f0-9]{2})?)$/,
+    hexColorRGB: /^#([A-F0-9]{6}|[a-f0-9]{6})$/,
+    hexColorRGBA: /^#([A-F0-9]{8}|[a-f0-9]{8})$/
 };
 
 /**
