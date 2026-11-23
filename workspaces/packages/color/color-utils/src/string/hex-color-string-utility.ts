@@ -77,4 +77,30 @@ export class HexColorStringUtility {
     public static isHexColor(input: unknown): input is string {
         return StringUtility.isString(input) && HexColorStringUtility.hexColorPattern.test(input);
     }
+
+    /**
+     * Is `input` a string matching the {@link HexColorStringUtility.hexColorPatternRGB} pattern?
+     *
+     * @param {unknown} input
+     *
+     * @returns {input is string}
+     *
+     * @public
+     */
+    public static isHexColorRGB(input: unknown): input is string {
+        return StringUtility.isString(input) && HexColorStringUtility.hexColorPatternRGB.test(input);
+    }
+
+    /**
+     * Is `input` a string matching the {@link HexColorStringUtility.hexColorPatternRGBA} pattern?
+     *
+     * @param {unknown} input
+     *
+     * @returns {input is string}
+     *
+     * @public
+     */
+    public static isHexColorRGBA(input: unknown): input is string {
+        return StringUtility.isString(input) && HexColorStringUtility.hexColorPatternRGBA.test(input);
+    }
 }
