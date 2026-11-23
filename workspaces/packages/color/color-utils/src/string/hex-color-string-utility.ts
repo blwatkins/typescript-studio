@@ -2,7 +2,7 @@
  * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-import { StaticInstanceError, StringUtility } from '@blwatkins/utils';
+import { PrimitiveTypeError, StaticInstanceError, StringUtility } from '@blwatkins/utils';
 
 const regularExpressions = {
     hexColor: /^(#[A-F0-9]{6}(?:[A-F0-9]{2})?|#[a-f0-9]{6}(?:[a-f0-9]{2})?)$/,
@@ -66,7 +66,7 @@ export class HexColorStringUtility {
     }
 
     /**
-     * Is `input` a string matching the {@link HexColorStringUtility.hexColorPattern} pattern?
+     * Is `input` a string matching {@link HexColorStringUtility.hexColorPattern}?
      *
      * @param {unknown} input
      *
@@ -79,7 +79,31 @@ export class HexColorStringUtility {
     }
 
     /**
-     * Is `input` a string matching the {@link HexColorStringUtility.hexColorPatternRGB} pattern?
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPattern}.
+     *
+     * @see {@link HexColorStringUtility.isHexColor}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPattern}.
+     *
+     * @public
+     */
+    public static assertHexColor(input: unknown, message?: string): asserts input is string {
+        if (!HexColorStringUtility.isHexColor(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a hex color string.');
+        }
+    }
+
+    /**
+     * Is `input` a string matching {@link HexColorStringUtility.hexColorPatternRGB}?
      *
      * @param {unknown} input
      *
@@ -92,7 +116,31 @@ export class HexColorStringUtility {
     }
 
     /**
-     * Is `input` a string matching the {@link HexColorStringUtility.hexColorPatternRGBA} pattern?
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPatternRGB}.
+     *
+     * @see {@link HexColorStringUtility.isHexColorRGB}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPatternRGB}.
+     *
+     * @public
+     */
+    public static assertHexColorRGB(input: unknown, message?: string): asserts input is string {
+        if (!HexColorStringUtility.isHexColorRGB(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a hex color RGB string.');
+        }
+    }
+
+    /**
+     * Is `input` a string matching {@link HexColorStringUtility.hexColorPatternRGBA}?
      *
      * @param {unknown} input
      *
@@ -102,5 +150,29 @@ export class HexColorStringUtility {
      */
     public static isHexColorRGBA(input: unknown): input is string {
         return StringUtility.isString(input) && HexColorStringUtility.hexColorPatternRGBA.test(input);
+    }
+
+    /**
+     * Asserts that `input` matches {@link HexColorStringUtility.hexColorPatternRGBA}.
+     *
+     * @see {@link HexColorStringUtility.isHexColorRGBA}
+     *
+     * @param {unknown} input
+     * @param {string} [message]
+     *
+     * @returns {asserts input is string}
+     *
+     * @throws {PrimitiveTypeError} When `input` does not match {@link HexColorStringUtility.hexColorPatternRGBA}.
+     *
+     * @public
+     */
+    public static assertHexColorRGBA(input: unknown, message?: string): asserts input is string {
+        if (!HexColorStringUtility.isHexColorRGBA(input)) {
+            if (StringUtility.isSingleLineText(message)) {
+                throw new PrimitiveTypeError(message);
+            }
+
+            throw new PrimitiveTypeError('Expected a hex color RGB string.');
+        }
     }
 }
