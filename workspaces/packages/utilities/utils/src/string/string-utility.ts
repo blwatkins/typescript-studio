@@ -338,4 +338,11 @@ export class StringUtility {
             throw new PrimitiveTypeError('Expected a single-line, uppercase text string.');
         }
     }
+
+    // TODO - hasMinLength
+    // TODO - hasMaxLength
+    // TODO - hasLength
+    // TODO - assertMinLength
+    // TODO - assertMaxLength
+    // TODO - assertLength
 }

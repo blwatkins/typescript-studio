@@ -3,5 +3,11 @@
  */
 
 export * from './array';
+export * from './boolean';
 export * from './error';
 export * from './string';
+
+// TODO - isFunction
+// TODO - assertFunction
+// TODO - isObject
+// TODO - assertObject

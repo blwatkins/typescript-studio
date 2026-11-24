@@ -3,7 +3,15 @@
  */
 
 import { PrimitiveTypeError, StaticInstanceError } from '../error';
+import { NumberUtility } from '../number/number-utility';
 import { StringUtility } from '../string';
+
+/**
+ * The maximum length of an array.
+ *
+ * @type {number}
+ */
+const MAX_ARRAY_LENGTH: number = Math.pow(2, 32) - 1;
 
 /**
  * Static methods and properties for validating arrays and array types.
@@ -121,8 +129,31 @@ export class ArrayUtility {
         }
     }
 
-    // public static hasMinLength(input: unknown[], minLength: number): boolean {
-    //     ArrayUtility.assertDenseArray(input);
-    //     return false;
-    // }
+    /**
+     * Is `index` a valid index for `array`?
+     *
+     * @see {@link NumberUtility.assertSafeInteger}
+     * @see {@link NumberUtility.assertPositive}
+     * @see {@link ArrayUtility.assertArray}
+     *
+     * @param {number} index
+     * @param {unknown[]} array
+     *
+     * @throws {PrimitiveTypeError} When `index` is not an integer within the safe integer range that is greater than or equal to zero.
+     * @throws {PrimitiveTypeError} When `array` is not an array.
+     */
+    public static isValidIndex(index: number, array: unknown[]): boolean {
+        NumberUtility.assertSafeInteger(index, 'index must be an integer');
+        NumberUtility.assertPositive(index, true, 'index must be greater than or equal to 0');
+        ArrayUtility.assertArray(array, 'array must be an array.');
+        return NumberUtility.isLT(index, MAX_ARRAY_LENGTH) && Object.hasOwn(array, index)
+    }
+
+    // TODO - assertValidIndex
+    // TODO - hasMinLength
+    // TODO - hasMaxLength
+    // TODO - hasLength
+    // TODO - assertMinLength
+    // TODO - assertMaxLength
+    // TODO - assertLength
 }
