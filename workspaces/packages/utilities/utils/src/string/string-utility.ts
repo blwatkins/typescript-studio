@@ -13,7 +13,7 @@ const regularExpressions = {
 };
 
 /**
- * Static properties and methods for validating string types.
+ * Static properties and methods for validating strings and string types.
  */
 export class StringUtility {
     /**
