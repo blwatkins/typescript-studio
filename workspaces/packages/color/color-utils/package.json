@@ -16,7 +16,8 @@
   "dependencies": {
     "@blwatkins/utils": "*",
     "@types/nearest-color": "^0.4.2",
-    "nearest-color": "^0.4.4"
+    "nearest-color": "^0.4.4",
+    "typebox": "^1.4.7"
   },
   "devDependencies": {
     "@blwatkins/eslint-config": "*",
