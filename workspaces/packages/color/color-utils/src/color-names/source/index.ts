@@ -3,3 +3,4 @@
  */
 
 export * from './color-names-source';
+export * from './json-color-names-source';
