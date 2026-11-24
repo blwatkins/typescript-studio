@@ -4,7 +4,7 @@ layout: 'custom-post'
 author:
   - 'Brittni Watkins'
 date: 2026-11-19
-modified_date: 2026-11-23
+modified_date: 2026-11-24
 toc: true
 read_time: false
 description: 'Resources and references used to develop the projects in Brittni''s TypeScript Studio.'
@@ -15,6 +15,7 @@ description: 'Resources and references used to develop the projects in Brittni''
 ### JavaScript
 
 - [MDN Web Docs - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [MDN Web Docs - Array: length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)
 - [MDN Web Docs - delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
 - [MDN Web Docs - Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
 - [MDN Web Docs - Object.is()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
@@ -58,6 +59,10 @@ description: 'Resources and references used to develop the projects in Brittni''
 ### rbenv
 
 - [rbenv](https://rbenv.org/)
+
+## Math
+
+- [MATH.net - Domain and range](https://www.math.net/domain-and-range)
 
 ## Text
 
