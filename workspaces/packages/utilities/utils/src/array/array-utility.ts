@@ -2,19 +2,12 @@
  * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-import { PrimitiveTypeError, StaticInstanceError } from '../error';
-import { NumberUtility } from '../number/number-utility';
-import { StringUtility } from '../string';
-
-/**
- * The maximum length of an array.
- *
- * @type {number}
- */
-const MAX_ARRAY_LENGTH: number = Math.pow(2, 32) - 1;
+import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
 
 /**
  * Static methods and properties for validating arrays and array types.
+ *
+ * This class is static and cannot be instantiated.
  */
 export class ArrayUtility {
     /**
@@ -27,6 +20,17 @@ export class ArrayUtility {
      */
     private constructor() {
         throw new StaticInstanceError('ArrayUtility is a static class and cannot be instantiated.');
+    }
+
+    /**
+     * Gets the maximum length of an array.
+     *
+     * @returns {number} (2^32) - 1
+     *
+     * @public
+     */
+    public static get MAX_LENGTH(): number {
+        return Math.pow(2, 32) - 1;
     }
 
     /**
@@ -62,11 +66,7 @@ export class ArrayUtility {
      */
     public static assertArray(input: unknown, message?: string): asserts input is unknown[] {
         if (!ArrayUtility.isArray(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected an array.');
+            throwError(PrimitiveTypeError, 'Expected an array.', message);
         }
     }
 
@@ -121,36 +121,11 @@ export class ArrayUtility {
      */
     public static assertDenseArray(input: unknown, message?: string): asserts input is unknown[] {
         if (!ArrayUtility.isDenseArray(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected a dense array.');
+            throwError(PrimitiveTypeError, 'Expected a dense array.', message);
         }
     }
 
-    /**
-     * Is `index` a valid index for `array`?
-     *
-     * @see {@link NumberUtility.assertSafeInteger}
-     * @see {@link NumberUtility.assertPositive}
-     * @see {@link ArrayUtility.assertArray}
-     *
-     * @param {number} index
-     * @param {unknown[]} array
-     *
-     * @returns {boolean}
-     *
-     * @throws {PrimitiveTypeError} When `index` is not an integer within the safe integer range that is greater than or equal to zero.
-     * @throws {PrimitiveTypeError} When `array` is not an array.
-     */
-    public static isValidIndex(index: number, array: unknown[]): boolean {
-        NumberUtility.assertSafeInteger(index, 'index must be an integer');
-        NumberUtility.assertPositive(index, true, 'index must be greater than or equal to 0');
-        ArrayUtility.assertArray(array, 'array must be an array.');
-        return NumberUtility.isLT(index, MAX_ARRAY_LENGTH) && Object.hasOwn(array, index);
-    }
-
+    // TODO - isValidIndex
     // TODO - assertValidIndex
     // TODO - hasMinLength
     // TODO - hasMaxLength
