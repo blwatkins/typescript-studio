@@ -3,9 +3,13 @@
  */
 
 import { BooleanUtility } from '../boolean';
-import { PrimitiveTypeError, StaticInstanceError } from '../error';
-import { StringUtility } from '../string';
+import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
 
+/**
+ * Static properties and methods for validating numbers and number types.
+ *
+ * This class is static and cannot be instantiated.
+ */
 export class NumberUtility {
     /**
      * Private constructor.
@@ -48,11 +52,7 @@ export class NumberUtility {
      */
     public static assertNumber(input: unknown, message?: string): asserts input is number {
         if (!NumberUtility.isNumber(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected a number.');
+            throwError(PrimitiveTypeError, 'Expected a number.', message);
         }
     }
 
@@ -85,11 +85,7 @@ export class NumberUtility {
      */
     public static assertFinite(input: unknown, message?: string): asserts input is number {
         if (!NumberUtility.isFinite(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected a finite number.');
+            throwError(PrimitiveTypeError, 'Expected a finite number.', message);
         }
     }
 
@@ -132,11 +128,7 @@ export class NumberUtility {
      */
     public static assertSafe(input: unknown, message?: string): asserts input is number {
         if (!NumberUtility.isSafe(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected a finite number in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
+            throwError(PrimitiveTypeError, 'Expected a finite number in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].', message);
         }
     }
 
@@ -158,7 +150,7 @@ export class NumberUtility {
     }
 
     /**
-     * Assert that `input` is an integer within the safe integer range.
+     * Asserts that `input` is an integer within the safe integer range.
      *
      * @remarks To be within the safe integer range, a value must be a finite number in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
      *
@@ -175,67 +167,64 @@ export class NumberUtility {
      */
     public static assertSafeInteger(input: unknown, message?: string): asserts input is number {
         if (!NumberUtility.isSafeInteger(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected an integer in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
+            throwError(PrimitiveTypeError, 'Expected an integer in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].', message);
         }
     }
 
     /**
-     * Is `input` a positive number?
+     * Is `input` a positive number within the safe integer range?
      *
-     * @see {@link NumberUtility.assertSafe}
+     * @remarks To be within the safe integer range, a value must be a finite number in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     *
      * @see {@link BooleanUtility.assertBoolean}
+     * @see {@link NumberUtility.isSafe}
      *
-     * @param {number} input
+     * @param {unknown} input
      * @param {boolean} [zeroInclusive] - `true` if zero (0) should return `true`; `false` if zero (0) should return `false`.
      *
-     * @returns {boolean}
+     * @returns {input is number}
      *
-     * @throws {PrimitiveTypeError} When `input` is in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
      * @throws {PrimitiveTypeError} When `zeroInclusive` is not a boolean.
      *
      * @public
      */
-    public static isPositive(input: number, zeroInclusive: boolean = false): boolean {
-        NumberUtility.assertSafe(input);
-        BooleanUtility.assertBoolean(zeroInclusive);
+    public static isPositive(input: unknown, zeroInclusive: boolean = false): input is number {
+        BooleanUtility.assertBoolean(zeroInclusive, 'zeroInclusive must be a boolean.');
 
-        if (zeroInclusive) {
-            return input >= 0;
+        if (NumberUtility.isSafe(input)) {
+            if (zeroInclusive) {
+                return input >= 0;
+            }
+
+            return input > 0;
         }
 
-        return input > 0;
+        return false;
     }
 
     /**
-     * Asserts that `input` is a positive number.
+     * Asserts that `input` is a positive number within the safe integer range.
+     *
+     * @remarks To be within the safe integer range, a value must be a finite number in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
      *
      * @see {@link NumberUtility.isPositive}
      *
-     * @param {number} input
+     * @param {unknown} input
      * @param {boolean} [zeroInclusive] - `true` if zero (0) should return `true`; `false` if zero (0) should return `false`.
      * @param {string} [message]
      *
-     * @returns {void}
+     * @returns {asserts input is number}
      *
-     * @throws {PrimitiveTypeError} When `input` is in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
      * @throws {PrimitiveTypeError} When `zeroInclusive` is not a boolean.
-     * @throws {PrimitiveTypeError} When `input` is not a positive number or zero when `zeroInclusive` is `true`.
+     * @throws {PrimitiveTypeError} When `input` is not a positive number less than or equal to {@link Number.MAX_SAFE_INTEGER} or zero when `zeroInclusive` is `true`.
      *
      * @public
      */
-    public static assertPositive(input: number, zeroInclusive: boolean = false, message?: string): void {
+    public static assertPositive(input: unknown, zeroInclusive: boolean = false, message?: string): asserts input is number {
         if (!NumberUtility.isPositive(input, zeroInclusive)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
             let rangeCharacter: '[' | '(' = '(';
             if (zeroInclusive) rangeCharacter = '[';
-            throw new PrimitiveTypeError(`Expected a number in the range ${rangeCharacter}0, MAX_SAFE_INTEGER].`);
+            throwError(PrimitiveTypeError, `Expected a number in the range ${rangeCharacter}0, MAX_SAFE_INTEGER].`, message);
         }
     }
 
