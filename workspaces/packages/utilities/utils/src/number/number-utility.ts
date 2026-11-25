@@ -316,8 +316,6 @@ export class NumberUtility {
         }
     }
 
-    // TODO - Review resumes here
-
     /**
      * Is `a` greater than or equal to `b`?
      *
@@ -337,6 +335,28 @@ export class NumberUtility {
         NumberUtility.assertSafe(b, 'b must be in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
         return a >= b;
     }
+
+    /**
+     * Asserts that `a` is greater than or equal to `b`.
+     *
+     * @param {number} a - The value that must be the greater of the two.
+     * @param {number} b - The value that must be the lesser of the two.
+     * @param {string} [message]
+     *
+     * @returns {void}
+     *
+     * @throws {PrimitiveTypeError} When `a` and `b` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     * @throws {ValueRangeError} When `a` is not greater than or equal to `b`.
+     *
+     * @public
+     */
+    public static assertGTE(a: number, b: number, message?: string): void {
+        if (!NumberUtility.isGTE(a, b)) {
+            throwError(ValueRangeError, 'a must be greater than or equal to b.', message);
+        }
+    }
+
+    // TODO - Review resumes here
 
     /**
      * Is `a` less than `b`?
@@ -403,7 +423,6 @@ export class NumberUtility {
     // TODO - assertValidRange
     // TODO - isInRange
     // TODO - assertInRange
-    // TODO - assertGTE
     // TODO - assertLT
     // TODO - assertLTE
 }
