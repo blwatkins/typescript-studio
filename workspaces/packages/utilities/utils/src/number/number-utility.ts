@@ -358,8 +358,6 @@ export class NumberUtility {
         }
     }
 
-    // TODO - Review resumes here
-
     /**
      * Is `a` less than `b`?
      *
@@ -423,6 +421,30 @@ export class NumberUtility {
     }
 
     /**
+     * Asserts that `a` is less than or equal to `b`.
+     *
+     * @see {@link NumberUtility.isLTE}
+     *
+     * @param {number} a - The value that must be the lesser of the two.
+     * @param {number} b - The value that must be the greater of the two.
+     * @param {string} [message]
+     *
+     * @returns {void}
+     *
+     * @throws {PrimitiveTypeError} When `a` and `b` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     * @throws {ValueRangeError} When `a` is not less than or equal to `b`.
+     *
+     * @public
+     */
+    public static assertLTE(a: number, b: number, message?: string): void {
+        if (!NumberUtility.isLTE(a, b)) {
+            throwError(ValueRangeError, 'Expected a to be less than or equal to b.', message);
+        }
+    }
+
+    // TODO - Review resumes here
+
+    /**
      * Do `min` and `max` form a valid range?
      *
      * @remarks For a range to be valid, `min` must be less than or equal to `max`?
@@ -447,6 +469,4 @@ export class NumberUtility {
     // TODO - assertValidRange
     // TODO - isInRange
     // TODO - assertInRange
-    // TODO - assertLT
-    // TODO - assertLTE
 }
