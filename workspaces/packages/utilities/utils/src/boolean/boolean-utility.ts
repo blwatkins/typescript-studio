@@ -4,6 +4,11 @@
 
 import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
 
+/**
+ * Static methods and properties for validating booleans and boolean types.
+ *
+ * This class is static and cannot be instantiated.
+ */
 export class BooleanUtility {
     /**
      * Private constructor.
