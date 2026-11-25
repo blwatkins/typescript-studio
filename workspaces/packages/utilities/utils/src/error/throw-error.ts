@@ -22,7 +22,7 @@ export type ErrorConstructor = new (message?: string) => Error;
  * @throws {PrimitiveTypeError} If {@link ErrorType} is not a function.
  */
 export function throwError(ErrorType: ErrorConstructor, defaultMessage?: string, customMessage?: string): never {
-    FunctionUtility.assertFunction(ErrorType);
+    FunctionUtility.assertFunction(ErrorType, 'ErrorType must be a function.');
 
     if (StringUtility.isSingleLineText(customMessage)) {
         throw new ErrorType(customMessage);
