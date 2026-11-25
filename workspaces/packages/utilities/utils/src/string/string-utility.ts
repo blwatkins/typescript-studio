@@ -345,4 +345,5 @@ export class StringUtility {
     // TODO - assertMinLength
     // TODO - assertMaxLength
     // TODO - assertLength
+    // TODO - trimString(string, length)
 }

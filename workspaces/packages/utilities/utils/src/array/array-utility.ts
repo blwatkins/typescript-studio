@@ -133,4 +133,5 @@ export class ArrayUtility {
     // TODO - assertMinLength
     // TODO - assertMaxLength
     // TODO - assertLength
+    // TODO - trimArray(array, length)
 }
