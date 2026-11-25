@@ -139,6 +139,8 @@ export class ArrayUtility {
      * @param {number} index
      * @param {unknown[]} array
      *
+     * @returns {boolean}
+     *
      * @throws {PrimitiveTypeError} When `index` is not an integer within the safe integer range that is greater than or equal to zero.
      * @throws {PrimitiveTypeError} When `array` is not an array.
      */
@@ -146,7 +148,7 @@ export class ArrayUtility {
         NumberUtility.assertSafeInteger(index, 'index must be an integer');
         NumberUtility.assertPositive(index, true, 'index must be greater than or equal to 0');
         ArrayUtility.assertArray(array, 'array must be an array.');
-        return NumberUtility.isLT(index, MAX_ARRAY_LENGTH) && Object.hasOwn(array, index)
+        return NumberUtility.isLT(index, MAX_ARRAY_LENGTH) && Object.hasOwn(array, index);
     }
 
     // TODO - assertValidIndex
