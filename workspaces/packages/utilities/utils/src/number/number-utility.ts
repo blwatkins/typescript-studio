@@ -3,7 +3,7 @@
  */
 
 import { BooleanUtility } from '../boolean';
-import {PrimitiveTypeError, StaticInstanceError, throwError, ValueRangeError} from '../error';
+import { PrimitiveTypeError, StaticInstanceError, throwError, ValueRangeError } from '../error';
 
 /**
  * Static properties and methods for validating numbers and number types.
@@ -441,32 +441,4 @@ export class NumberUtility {
             throwError(ValueRangeError, 'Expected a to be less than or equal to b.', message);
         }
     }
-
-    // TODO - Review resumes here
-
-    /**
-     * Do `min` and `max` form a valid range?
-     *
-     * @remarks For a range to be valid, `min` must be less than or equal to `max`?
-     *
-     * @see {@link NumberUtility.assertSafe}
-     *
-     * @param {number} min
-     * @param {number} max
-     *
-     * @returns {boolean}
-     *
-     * @throws {PrimitiveTypeError} When `min` and `max` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
-     *
-     * @public
-     */
-    public static isValidRange(min: number, max: number): boolean {
-        NumberUtility.assertSafe(min, 'min must be in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
-        NumberUtility.assertSafe(max, 'max must be in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
-        return min <= max;
-    }
-
-    // TODO - assertValidRange
-    // TODO - isInRange
-    // TODO - assertInRange
 }
