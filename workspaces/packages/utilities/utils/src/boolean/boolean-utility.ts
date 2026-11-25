@@ -2,8 +2,7 @@
  * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-import { PrimitiveTypeError, StaticInstanceError } from '../error';
-import { StringUtility } from '../string';
+import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
 
 export class BooleanUtility {
     /**
@@ -47,11 +46,7 @@ export class BooleanUtility {
      */
     public static assertBoolean(input: unknown, message?: string): asserts input is boolean {
         if (!BooleanUtility.isBoolean(input)) {
-            if (StringUtility.isSingleLineText(message)) {
-                throw new PrimitiveTypeError(message);
-            }
-
-            throw new PrimitiveTypeError('Expected a boolean.');
+            throwError(PrimitiveTypeError, 'Expected a boolean.', message);
         }
     }
 }
