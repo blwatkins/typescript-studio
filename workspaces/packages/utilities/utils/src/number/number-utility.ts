@@ -410,7 +410,7 @@ export class NumberUtility {
      *
      * @returns {boolean}
      *
-     * @throws {PrimitiveTypeError} When `min` and `max` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}]..
+     * @throws {PrimitiveTypeError} When `min` and `max` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
      *
      * @public
      */
