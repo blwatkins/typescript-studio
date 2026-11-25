@@ -312,7 +312,7 @@ export class NumberUtility {
      */
     public assertGT(a: number, b: number, message?: string): void {
         if (!NumberUtility.isGT(a, b)) {
-            throwError(ValueRangeError, 'a must be greater than b.', message);
+            throwError(ValueRangeError, 'Expected a to be greater than b.', message);
         }
     }
 
@@ -339,6 +339,8 @@ export class NumberUtility {
     /**
      * Asserts that `a` is greater than or equal to `b`.
      *
+     * @see {@link NumberUtility.isGTE}
+     *
      * @param {number} a - The value that must be the greater of the two.
      * @param {number} b - The value that must be the lesser of the two.
      * @param {string} [message]
@@ -352,7 +354,7 @@ export class NumberUtility {
      */
     public static assertGTE(a: number, b: number, message?: string): void {
         if (!NumberUtility.isGTE(a, b)) {
-            throwError(ValueRangeError, 'a must be greater than or equal to b.', message);
+            throwError(ValueRangeError, 'Expected a to be greater than or equal to b.', message);
         }
     }
 
@@ -376,6 +378,28 @@ export class NumberUtility {
         NumberUtility.assertSafe(a, 'a must be in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
         NumberUtility.assertSafe(b, 'b must be in the range [MIN_SAFE_INTEGER, MAX_SAFE_INTEGER].');
         return a < b;
+    }
+
+    /**
+     * Asserts that `a` is less than `b`.
+     *
+     * @see {@link NumberUtility.isLT}
+     *
+     * @param {number} a - The value that must be the lesser of the two.
+     * @param {number} b - The value that must be the greater of the two.
+     * @param {string} [message]
+     *
+     * @returns {void}
+     *
+     * @throws {PrimitiveTypeError} When `a` and `b` are not both numbers in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     * @throws {ValueRangeError} When `a` is not less than `b`.
+     *
+     * @public
+     */
+    public static assertLT(a: number, b: number, message?: string): void {
+        if (!NumberUtility.isLT(a, b)) {
+            throwError(ValueRangeError, 'Expected a to be less than b.', message);
+        }
     }
 
     /**
