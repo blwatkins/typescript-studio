@@ -341,6 +341,13 @@ export class NumberUtility {
         return min <= max;
     }
 
+    // TODO - isPositiveInteger
+    // TODO - assertPositiveInteger
+    // TODO - assertValidRange
     // TODO - isInRange
     // TODO - assertInRange
+    // TODO - assertGT
+    // TODO - assertGTE
+    // TODO - assertLT
+    // TODO - assertLTE
 }
