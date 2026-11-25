@@ -6,6 +6,8 @@ import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
 
 /**
  * Static properties and methods for validating functions and function types.
+ *
+ * This class is static and cannot be instantiated.
  */
 export class FunctionUtility {
     /**
