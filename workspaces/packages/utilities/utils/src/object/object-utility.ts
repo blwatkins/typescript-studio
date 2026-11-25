@@ -56,7 +56,7 @@ export class ObjectUtility {
      * @public
      */
     public static assertObject(input: unknown, message?: string): asserts input is object {
-        if (!this.isObject(input)) {
+        if (!ObjectUtility.isObject(input)) {
             throwError(PrimitiveTypeError, 'Expected a non-array object.', message);
         }
     }
