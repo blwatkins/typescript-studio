@@ -274,6 +274,8 @@ export class NumberUtility {
         }
     }
 
+    // TODO - Review resumes here
+
     /**
      * Is `a` greater than `b`?
      *
@@ -376,8 +378,6 @@ export class NumberUtility {
         return min <= max;
     }
 
-    // TODO - isPositiveInteger
-    // TODO - assertPositiveInteger
     // TODO - assertValidRange
     // TODO - isInRange
     // TODO - assertInRange
