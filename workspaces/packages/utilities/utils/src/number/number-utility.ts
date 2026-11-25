@@ -229,6 +229,52 @@ export class NumberUtility {
     }
 
     /**
+     * Is `input` a positive integer within the safe integer range?
+     *
+     * @remarks To be within the safe integer range, a value must be a finite number in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     *
+     * @see {@link NumberUtility.isPositive}
+     *
+     * @param {unknown} input
+     * @param {boolean} [zeroInclusive] - `true` if zero (0) should return `true`; `false` if zero (0) should return `false`.
+     *
+     * @returns {input is number}
+     *
+     * @throws {PrimitiveTypeError} When `zeroInclusive` is not a boolean.
+     *
+     * @public
+     */
+    public static isPositiveInteger(input: unknown, zeroInclusive: boolean = false): input is number {
+        return NumberUtility.isPositive(input, zeroInclusive) && Number.isInteger(input);
+    }
+
+    /**
+     * Asserts that `input` is a positive integer within the safe integer range.
+     *
+     * @remarks To be within the safe integer range, a value must be a finite number in the range [{@link Number.MIN_SAFE_INTEGER}, {@link Number.MAX_SAFE_INTEGER}].
+     *
+     * @see {@link NumberUtility.isPositiveInteger}
+     *
+     * @param {unknown} input
+     * @param {boolean} [zeroInclusive] - `true` if zero (0) should return `true`; `false` if zero (0) should return `false`.
+     * @param {string} [message]
+     *
+     * @returns {asserts input is number}
+     *
+     * @throws {PrimitiveTypeError} When `zeroInclusive` is not a boolean.
+     * @throws {PrimitiveTypeError} When `input` is not a positive integer less than or equal to {@link Number.MAX_SAFE_INTEGER} or zero when `zeroInclusive` is `true`.
+     *
+     * @public
+     */
+    public static assertPositiveInteger(input: unknown, zeroInclusive: boolean = false, message?: string): asserts input is number {
+        if (!NumberUtility.isPositiveInteger(input, zeroInclusive)) {
+            let rangeCharacter: '[' | '(' = '(';
+            if (zeroInclusive) rangeCharacter = '[';
+            throwError(PrimitiveTypeError, `Expected an integer in the range ${rangeCharacter}0, MAX_SAFE_INTEGER].`, message);
+        }
+    }
+
+    /**
      * Is `a` greater than `b`?
      *
      * @see {@link NumberUtility.assertSafe}
