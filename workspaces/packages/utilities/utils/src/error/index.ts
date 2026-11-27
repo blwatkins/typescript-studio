@@ -3,6 +3,7 @@
  */
 
 export * from './index-range-error';
+export * from './intstance-type-error';
 export * from './length-range-error';
 export * from './primitive-type-error';
 export * from './schema-type-error';
