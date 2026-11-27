@@ -2,8 +2,8 @@
  * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
-import {NumberUtility} from "../number";
+import { LengthRangeError, PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
+import { NumberUtility } from '../number';
 
 /**
  * Static methods and properties for validating arrays and array types.
@@ -148,11 +148,31 @@ export class ArrayUtility {
         return input.length >= minLength;
     }
 
+    /**
+     * Assers that `input` has a length greater than or equal to `minLength`.
+     *
+     * @param {unknown[]} input
+     * @param {number} minLength
+     * @param {string} [message]
+     *
+     * @returns {void}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not an array.
+     * @throws {PrimitiveTypeError} When `minLength` is not zero or a positive integer.
+     * @throws {LengthRangeError} When `input` does not have a length greater than or equal to `minLength`.
+     *
+     * @public
+     */
+    public static assertMinLength(input: unknown[], minLength: number, message?: string): void {
+        if (!ArrayUtility.hasMinLength(input, minLength)) {
+            throwError(LengthRangeError, 'Expected input to meet minimum length requirements.', message);
+        }
+    }
+
     // TODO - isValidIndex
     // TODO - assertValidIndex
     // TODO - hasMaxLength
     // TODO - hasLength
-    // TODO - assertMinLength
     // TODO - assertMaxLength
     // TODO - assertLength
     // TODO - trimArray(array, length)
