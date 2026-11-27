@@ -3,6 +3,7 @@
  */
 
 import { PrimitiveTypeError, StaticInstanceError, throwError } from '../error';
+import {NumberUtility} from "../number";
 
 /**
  * Static methods and properties for validating arrays and array types.
@@ -125,9 +126,30 @@ export class ArrayUtility {
         }
     }
 
+    /**
+     * Does `input` have a length greater than or equal to `minLength`?
+     *
+     * @see {@link ArrayUtility.assertArray}
+     * @see {@link NumberUtility.assertPositiveInteger}
+     *
+     * @param {unknown[]} input
+     * @param {number} minLength
+     *
+     * @returns {boolean}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not an array.
+     * @throws {PrimitiveTypeError} When `minLength` is not zero or a positive integer.
+     *
+     * @public
+     */
+    public static hasMinLength(input: unknown[], minLength: number): boolean {
+        ArrayUtility.assertArray(input);
+        NumberUtility.assertPositiveInteger(minLength, true);
+        return input.length >= minLength;
+    }
+
     // TODO - isValidIndex
     // TODO - assertValidIndex
-    // TODO - hasMinLength
     // TODO - hasMaxLength
     // TODO - hasLength
     // TODO - assertMinLength
