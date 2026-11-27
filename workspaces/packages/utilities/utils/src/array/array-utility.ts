@@ -169,11 +169,52 @@ export class ArrayUtility {
         }
     }
 
+    /**
+     * Does `input` have a length less than or equal to `maxLength`?
+     *
+     * @see {@link ArrayUtility.assertArray}
+     * @see {@link NumberUtility.assertPositiveInteger}
+     *
+     * @param {unknown[]} input
+     * @param {number} maxLength
+     *
+     * @returns {boolean}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not an array.
+     * @throws {PrimitiveTypeError} When `maxLength` is not zero or a positive integer.
+     *
+     * @public
+     */
+    public static hasMaxLength(input: unknown[], maxLength: number): boolean {
+        ArrayUtility.assertArray(input);
+        NumberUtility.assertPositiveInteger(maxLength, true);
+        return input.length <= maxLength;
+    }
+
+    /**
+     * Assers that `input` has a length less than or equal to `maxLength`.
+     *
+     * @param {unknown[]} input
+     * @param {number} maxLength
+     * @param {string} [message]
+     *
+     * @returns {void}
+     *
+     * @throws {PrimitiveTypeError} When `input` is not an array.
+     * @throws {PrimitiveTypeError} When `maxLength` is not zero or a positive integer.
+     * @throws {LengthRangeError} When `input` does not have a length less than or equal to `maxLength`.
+     *
+     * @public
+     */
+    public static assertMaxLength(input: unknown[], maxLength: number, message?: string): void {
+        if (!ArrayUtility.hasMaxLength(input, maxLength)) {
+            throwError(LengthRangeError, 'Expected input to meet maximum length requirements.', message);
+        }
+    }
+
     // TODO - isValidIndex
     // TODO - assertValidIndex
-    // TODO - hasMaxLength
     // TODO - hasLength
-    // TODO - assertMaxLength
     // TODO - assertLength
     // TODO - trimArray(array, length)
 }
