@@ -2,11 +2,4 @@
  * Copyright (c) 2026 Brittni Watkins. All rights reserved.
  */
 
-/**
- * Hello, World!
- *
- * @returns {void}
- */
-export function helloWorld(): void {
-    console.log('Hello, World!');
-}
+export * from './html-element';
